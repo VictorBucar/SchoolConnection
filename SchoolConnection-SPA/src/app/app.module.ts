@@ -10,7 +10,9 @@ import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 
-import { ErrorInterceptorProvide } from './services/error.interceptor';
+import { ErrorInterceptorProvider } from './services/error.interceptor';
+import { AlertifyjsService } from './services/alertifyjs.service';
+import { NgxPopperModule } from 'ngx-popper';
 
 @NgModule({
    declarations: [
@@ -23,11 +25,13 @@ import { ErrorInterceptorProvide } from './services/error.interceptor';
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      NgxPopperModule
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvide
+      ErrorInterceptorProvider,
+      AlertifyjsService
    ],
    bootstrap: [
       AppComponent
