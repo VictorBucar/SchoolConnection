@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-primary">
     <a class="navbar-brand" href="#">School Connection</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -22,7 +22,7 @@
             Welcome {{authService.decodedToken?.unique_name}}
           </a>
         </li>
-        <div class="dropdown-menu" *dropdownMenu>
+        <div class="dropdown-menu mt-3" *dropdownMenu>
           <a href="#" class="dropdown-item"><i class="fa fa-user"></i> Edit Profile</a>
           <div class="dropdown-divider"></div>
           <a href="#" (click)="logout()" class="dropdown-item"><i class="fa fa-sign-out"></i>Logout</a>
