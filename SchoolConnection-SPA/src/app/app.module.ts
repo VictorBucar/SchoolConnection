@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { AlertifyjsService } from './services/alertifyjs.service';
-import { NgxPopperModule } from 'ngx-popper';
+
 
 @NgModule({
    declarations: [
@@ -26,7 +28,7 @@ import { NgxPopperModule } from 'ngx-popper';
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
-      NgxPopperModule
+      BsDropdownModule.forRoot()
    ],
    providers: [
       AuthService,

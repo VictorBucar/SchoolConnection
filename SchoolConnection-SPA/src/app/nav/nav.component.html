@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">School Connection</a>
-
+    <a class="navbar-brand" href="#">School Connection</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Schools <span class="sr-only">(current)</span></a>
@@ -16,23 +15,21 @@
       </li>
     </ul>
 
-    <div *ngIf="loggedIn()" class="dropdown">
-      <div>
-          <a href="#" (click)="logout()">
-             <i class="fa fa-sign-out"></i> Logout
+     <div *ngIf="loggedIn()" class="dropdown" dropdown>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="dropdown-toggle text-light" dropdownToggle>
+            Welcome {{authService.decodedToken?.unique_name}}
           </a>
-      </div>
-      <a class="dropdown-toggle text-light">
-        Welcome user
-      </a>
+        </li>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a href="#" class="dropdown-item"><i class="fa fa-user"></i> Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" (click)="logout()" class="dropdown-item"><i class="fa fa-sign-out"></i>Logout</a>
+        </div>
 
-      <div class="dropdown-menu">
-        <a href="#" class="dropdown-item"><i class="fa fa-user"></i> Edit Profile</a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item"><i class="fa fa-sign-out"></i>Logout</a>
-      </div>
+      </ul>
     </div>
-
     <form *ngIf="!loggedIn()" #loginForm="ngForm" (ngSubmit)="login()" class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Name" name="name" required [(ngModel)]="loginModel.name">
       <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password" required [(ngModel)]="loginModel.password">
