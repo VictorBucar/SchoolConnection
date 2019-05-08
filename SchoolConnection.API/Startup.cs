@@ -21,6 +21,7 @@ using SchoolConnection.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using SchoolConnection.API.Helpers;
+using AutoMapper;
 
 namespace SchoolConnection.API
 {
@@ -36,11 +37,18 @@ namespace SchoolConnection.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(opt => {
+                    opt.SerializerSettings.ReferenceLoopHandling = 
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
             services.AddCors();
+            services.AddAutoMapper();
+            //domain.GetAssemblies();
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ISchoolRepository, SchoolRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters{
@@ -75,9 +83,8 @@ namespace SchoolConnection.API
                 //app.UseHsts();
             }
 
-           
+            //seeder.SeedUsers();
             app.UseHttpsRedirection();
-            seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();
