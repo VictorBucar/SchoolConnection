@@ -41,7 +41,7 @@ namespace SchoolConnection.API
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = 
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
+                }); // used to ignore serialization loop reference
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
             services.AddCors();
             services.AddAutoMapper();

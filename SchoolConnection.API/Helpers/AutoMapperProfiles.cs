@@ -14,7 +14,7 @@ namespace SchoolConnection.API.Helpers
                 .ForMember(x => x.PhotoUrl, opt =>
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url)
                 )
-                .ForMember(x => x.Age, opt => opt.MapFrom(src => (src.DateOfBirth.Year - DateTime.Now.Year) * -1));
+                .ForMember(dest => dest.Age, src => src.MapFrom(d => d.DateOfBirth.CalculateAge()));
 
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(x => x.PhotoUrl, opt => 

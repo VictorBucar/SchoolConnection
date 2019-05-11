@@ -1,5 +1,27 @@
 import { Injectable } from '@angular/core';
 declare let alertify: any;
+alertify.defaults = {
+  notifier:{
+  // auto-dismiss wait time (in seconds)
+  delay:5,
+  // default position
+  position:'bottom-right',
+  // adds a close button to notifier messages
+  closeButton: false
+  },
+
+   // language resources
+   glossary:{
+    // dialogs default title
+    title:'AlertifyJS',
+    // ok button text
+    ok: 'OK',
+    // cancel button text
+    cancel: 'Cancel'
+}
+
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +44,7 @@ okCallback(){
 }
 
 success(message: string) {
-  alertify.success(message)
+  alertify.notify(message, 'success2')
 }
 
 error(message: string) {
@@ -35,6 +57,9 @@ warning(message: string) {
 
 message(message: string) {
   alertify.message(message)
+}
+notify(message: string) {
+  alertify.notify(message, 'custom', 4, () => {console.log('dismissed');});
 }
 
 }
