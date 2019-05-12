@@ -4,6 +4,7 @@ import { SchoolListComponent } from './school-list/school-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './guards/auth.guard';
+import { MemberListComponent } from './members/member-list/member-list.component';
 
 export const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'schools', component: SchoolListComponent},
+      {path: 'members', component: MemberListComponent},
       {path: 'messages', component: MessagesComponent},
       {path: 'lists', component: ListsComponent},
     ]

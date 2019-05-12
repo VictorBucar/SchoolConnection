@@ -20,6 +20,9 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './guards/auth.guard';
+import { UserService } from './services/user.service';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 
 
@@ -31,7 +34,9 @@ import { AuthGuard } from './guards/auth.guard';
       HomeComponent,
       SchoolListComponent,
       ListsComponent,
-      MessagesComponent
+      MessagesComponent,
+      MemberListComponent,
+      MemberCardComponent
    ],
    imports: [
       BrowserModule,
@@ -45,7 +50,8 @@ import { AuthGuard } from './guards/auth.guard';
       AuthService,
       ErrorInterceptorProvider,
       AlertifyjsService,
-      AuthGuard
+      AuthGuard,
+      UserService
    ],
    bootstrap: [
       AppComponent
