@@ -12,10 +12,25 @@
 }
 .card-img-wrapper {
   overflow: hidden;
+  position: relative;
 }
 
-.card-body:hover p {
-  transform: scale(1.2, 1.2);
-  transition-duration: 500ms;
-  transition-timing-function: ease-out;
+.member-icons {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0;
+}
+
+.card-img-wrapper:hover .member-icons{
+  bottom: 0;
+  opacity: 1;
+  transform: rotate(360deg);
+}
+
+.animate {
+  transition: all 0.5s ease-in-out;
 }
